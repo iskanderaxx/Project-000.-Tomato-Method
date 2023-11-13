@@ -13,6 +13,11 @@ final class ViewController: UIViewController {
     private var tomatoTime = 25
     private var pauseTime = 5
     
+    /*
+     var circularProgressBarView: CircularProgressBarView!
+    var circularViewDuration: TimeInterval = 25
+     */
+    
     // MARK: - UIElements & Oulets
     
     private lazy var backgroundImage: UIImageView = {
@@ -70,6 +75,7 @@ final class ViewController: UIViewController {
         setupHierarchy()
         setupStackView()
         setupLayout()
+        // setCircularProgressBarView()
     }
     
     // MARK: - Setup
@@ -88,16 +94,30 @@ final class ViewController: UIViewController {
     
     private func setupLayout() {
         backgroundImage.snp.makeConstraints { make in
-            make.centerX.equalTo(view)
-            make.centerY.equalTo(view)
+            make.top.equalTo(view)
+            make.bottom.equalTo(view)
+            make.leading.equalTo(view)
+            make.trailing.equalTo(view)
         }
         
         stackView.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.bottom.equalToSuperview().offset(-175)
+            make.bottom.equalToSuperview().offset(-140)
             make.top.equalToSuperview().offset(100)
         }
     }
+    
+    /*
+    // MARK: - Progress Bar
+    
+    func setCircularProgressBarView() {
+        circularProgressBarView = CircularProgressBarView(frame: .zero)
+        
+        circularProgressBarView.center = view.center
+        circularProgressBarView.progressAnimation(duration: circularViewDuration)
+        view.addSubview(circularProgressBarView)
+    }
+     */
     
     // MARK: - Actions
     
